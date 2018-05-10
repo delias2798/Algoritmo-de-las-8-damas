@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/elias/AndroidStudioProjects/Algoritmo_8_damas/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/home/elias/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/673e2cf470a28aab7f0af55d7b507a9d/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

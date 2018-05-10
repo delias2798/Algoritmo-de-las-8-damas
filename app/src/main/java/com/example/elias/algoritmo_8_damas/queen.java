@@ -1,9 +1,22 @@
 package com.example.elias.algoritmo_8_damas;
 
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageButton;
 
-public class queen {
+
+public class queen extends AppCompatActivity {
+    public View mview;
     final int N = 8;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public queen(View mainActivity) {
+        mview = mainActivity;
+        solveNQ();
+    }
 
     /* A utility function to print solution */
     void printSolution(int board[][])
@@ -46,6 +59,7 @@ public class queen {
 
     /* A recursive utility function to solve N
     Queen problem */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     boolean solveNQUtil(int board[][], int col)
     {
 /* base case: If all queens are placed
@@ -78,7 +92,7 @@ board[i][col] */
             {
                 /* Place this queen in board[i][col] */
                 board[i][col] = 1;
-                allocate_queen(i, col);
+                allocate_queen(i, col, true);
 
 
                 /* recur to place rest of the queens */
@@ -93,6 +107,7 @@ return true;
 doesn't lead to a solution then
 remove queen from board[i][col] */
                 board[i][col] = 0; // BACKTRACK
+                allocate_queen(i, col, false);
             }
         }
 
@@ -101,14 +116,83 @@ this colum col, then return false */
         return res;
     }
 
-    private void allocate_queen(int i, int col) {
-        ImageButton button;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void allocate_queen(int i, int col, boolean queen) {
+        int n;
         if (i == 0){
-            //button= (ImageButton)findViewById(R.id.imageButton1);
+            n = col + 1;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+
+        }else if(i == 1){
+            n = col + 9;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 2){
+            n = col + 17;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 3){
+            n = col + 25;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 4){
+            n = col + 33;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 5){
+            n = col + 41;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 6){
+            n = col + 49;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
+        }else if(i == 7){
+            n = col + 57;
+            ImageButton button = mview.findViewWithTag("casilla".concat(String.valueOf(n)));
+            setImage(button, i, col, queen);
         }
-        //button= (ImageButton)findViewById(R.id.);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setImage(ImageButton button, int line, int col, boolean queen) {
+        if (queen) {
+            if (line % 2 == 0) {
+                if (col % 2 == 0) {
+                    //button.setImageDrawable(getDrawable(R.drawable.dama_blanca_blanca));
+                    //
+                    button.setBackground(getDrawable(R.drawable.dama_blanca_negra));
+                } else {
+                    //button.setImageDrawable(getDrawable(R.drawable.dama_blanca_negra));
+                    button.setBackground(getDrawable(R.drawable.dama_blanca_negra));
+                }
+            } else {
+                if (col % 2 == 0) {
+                    button.setBackground(getDrawable(R.drawable.dama_blanca_negra));
+                } else {
+                    //
+                    button.setBackground(getDrawable(R.drawable.dama_blanca_negra));
+                }
+            }
+
+        }else{
+            if(line % 2 == 0){
+                if(col % 2 == 0){
+                    button.setBackground(getDrawable(R.drawable.escaque_blanco));
+                }else {
+                    button.setBackground(getDrawable(R.drawable.escaque_negro));
+                }
+            }else {
+                if(col % 2 == 0){
+                    button.setBackground(getDrawable(R.drawable.escaque_negro));
+                }else {
+                    button.setBackground(getDrawable(R.drawable.escaque_blanco));
+                }
+            }
+        }
+    }
     /* This function solves the N Queen problem using
     Backtracking. It mainly uses solveNQUtil() to
     solve the problem. It returns false if queens
@@ -117,6 +201,7 @@ this colum col, then return false */
     Please note that there may be more than one
     solutions, this function prints one of the
     feasible solutions.*/
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     boolean solveNQ()
     {
         /*int board[][] = {{0, 0, 0, 0},
